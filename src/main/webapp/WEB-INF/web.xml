@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+version="2.5">
+
+  <display-name>ss-sigema</display-name>
+  
+<!--   Cuando el se envía una peticion, sera spring el primero en atenderla -->
+  <servlet>
+  	<servlet-name>webmvc-dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+<!--   Spring trabajara con cualquier tipo de peticion, .jsp .html .xhtml .java .js , etc. -->
+  <servlet-mapping>
+  	<servlet-name>webmvc-dispatcher</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/webmvc-dispatcher-servlet.xml</param-value>
+  </context-param>
+  
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+<!--   Indicamos que archivo sera el primero en ejecutarse -->
+  <welcome-file-list>
+  	<welcome-file>/sigema_pages/indexSigema.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
